@@ -2,14 +2,22 @@ import { Badge } from '@/components/Badge'
 import { Background } from '@/components/Background'
 import Link from 'next/link'
 import React from 'react'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
+import { HomeHeader } from './page.client'
 
-const Page = () => {
+const Page = async () => {
+  const payload = await getPayload({ config: configPromise })
+  const data = await payload.findGlobal({
+    slug: 'Home',
+  })
+
   return (
     <>
       <main>
         <article>
           <Badge />
-          <h1>Payload 3.0</h1>
+          <HomeHeader home={data} />
           <p>
             This BETA is rapidly evolving, you can report any bugs against{' '}
             <Link href="https://github.com/payloadcms/payload-3.0-demo/issues" target="_blank">

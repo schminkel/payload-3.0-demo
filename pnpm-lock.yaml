@@ -11,6 +11,9 @@ dependencies:
   '@payloadcms/db-postgres':
     specifier: 3.0.0-beta.18
     version: 3.0.0-beta.18(@types/react@18.2.79)(payload@3.0.0-beta.18)(react@18.3.0)
+  '@payloadcms/live-preview-react':
+    specifier: ^0.2.0
+    version: 0.2.0(react@18.3.0)
   '@payloadcms/next':
     specifier: 3.0.0-beta.18
     version: 3.0.0-beta.18(@types/react@18.2.79)(file-type@16.5.4)(graphql@16.8.1)(http-status@1.6.2)(monaco-editor@0.48.0)(next@14.3.0-canary.7)(payload@3.0.0-beta.18)(react-dom@18.3.0)(react@18.3.0)(scheduler@0.23.1)
@@ -2001,6 +2004,19 @@ packages:
       pluralize: 8.0.0
     dev: false
 
+  /@payloadcms/live-preview-react@0.2.0(react@18.3.0):
+    resolution: {integrity: sha512-ao7DN2GJFPoipw2cmt2M0tfwmUa0hIn3UxB5EaMv6RduMuOMQlG5hx5ouX3g5wPMcQpyvLwxCuuiQhj1nKMGhA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@payloadcms/live-preview': 0.2.2
+      react: 18.3.0
+    dev: false
+
+  /@payloadcms/live-preview@0.2.2:
+    resolution: {integrity: sha512-FOcg/HOIzzESjoT4vXgM7Pjd+bODodZTKR/pEJWsjLtyARd6NfF3MNWS+tdlfa3TOZrdT8WnHBAKsKyREyE3og==}
+    dev: false
+
   /@payloadcms/next@3.0.0-beta.18(@types/react@18.2.79)(file-type@16.5.4)(graphql@16.8.1)(http-status@1.6.2)(monaco-editor@0.48.0)(next@14.3.0-canary.7)(payload@3.0.0-beta.18)(react-dom@18.3.0)(react@18.3.0)(scheduler@0.23.1):
     resolution: {integrity: sha512-3/RA/d7gYhFtncIyrBn8tC/boONKQ345u9RHWQtSAA21ldy81qQhdAlZOzvAgjN9dnZ3j1AQCReef5tChK6A+Q==}
     engines: {node: '>=18.20.2'}
@@ -2725,6 +2741,7 @@ packages:
   /@swc/core@1.5.0:
     resolution: {integrity: sha512-fjADAC5gOOX54Rpcr1lF9DHLD+nPD5H/zXLtEgK2Ez3esmogT+LfHzCZtUxqetjvaMChKhQ0Pp0ZB6Hpz/tCbw==}
     engines: {node: '>=10'}
+    deprecated: Mac OS installation is broken
     requiresBuild: true
     peerDependencies:
       '@swc/helpers': ^0.5.0
