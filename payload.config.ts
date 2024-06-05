@@ -25,10 +25,29 @@ import { buildConfig } from 'payload/config'
 import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
+import { s3Storage } from '@payloadcms/storage-s3'
+
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  plugins: [
+    s3Storage({
+      bucket: process.env.S3_BUCKET || '',
+      collections: {
+        media: true,
+      },
+      config: {
+        endpoint: process.env.S3_ENDPOINT || '',
+        region: process.env.S3_REGION || '',
+        credentials: {
+          accessKeyId: process.env.S3_ACCESS_KEY_ID || '',
+          secretAccessKey: process.env.S3_SECRET_ACCESS_KEY || '',
+        },
+      },
+    }),
+  ],
+
   //editor: slateEditor({}),
   editor: lexicalEditor(),
   collections: [
@@ -59,7 +78,32 @@ export default buildConfig({
     },
     {
       slug: 'media',
-      upload: true,
+      upload: {
+        crop: true,
+        focalPoint: true,
+        imageSizes: [
+          {
+            name: 'blur',
+            width: 8,
+          },
+          {
+            name: 'xs',
+            width: 32,
+          },
+          {
+            name: 'sm',
+            width: 320,
+          },
+          {
+            name: 'md',
+            width: 640,
+          },
+          {
+            name: 'lg',
+            width: 1024,
+          },
+        ],
+      },
       fields: [
         {
           name: 'text',
