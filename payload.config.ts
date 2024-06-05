@@ -31,6 +31,11 @@ const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
+  csrf: [
+    // whitelist of domains to allow cookie auth from
+    'https://payloadcms.xtra.tools',
+    'http://localhost:3000',
+  ],
   plugins: [
     s3Storage({
       bucket: process.env.S3_BUCKET || '',
